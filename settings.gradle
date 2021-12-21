@@ -1,0 +1,3 @@
+include ':meixlibrary'
+include ':app'
+rootProject.name = "Meix_Android_Material"

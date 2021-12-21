@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.meix.library.ui.ShapeTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/page_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    app:corner="0dp"
+    app:shape_color="@color/white"
+    android:padding="20dp">
+
+</com.meix.library.ui.ShapeTextView>

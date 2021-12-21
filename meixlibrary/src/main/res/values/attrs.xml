@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressBar">
+        <attr name="ringWidth" format="integer" />
+        <attr name="trackColor" format="reference|color" />
+        <attr name="thumbColor" format="reference|color" />
+        <attr name="centerColor" format="reference|color" />
+        <attr name="centerTextColor" format="reference|color" />
+        <attr name="centerTextSize" format="integer" />
+        <attr name="progress" format="integer"></attr>
+    </declare-styleable>
+    <declare-styleable name="ShapeTextView">
+        <attr name="corner" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="reference|color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="reference|color" />
+        <attr name="text_content" format="string" />
+        <attr name="shape_color" format="reference|color" />
+    </declare-styleable>
+</resources>
