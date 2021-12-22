@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Region;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.luck.picture.lib.PictureSelector;
@@ -29,18 +32,21 @@ import java.util.List;
 
 public class PictureSelectorActivity extends AppCompatActivity {
     private RecyclerView recycler_view_picture;
+    private FrameLayout fl_parent;
     private ShowArticlePictureAdapter pictureAdapter;
     private List<LocalMedia> mSelectPictures = new ArrayList<>();
     private int selectPictureCount = 0;
     private int maxSelectCount = 9;
+    private int spanCount = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_selector);
         recycler_view_picture = findViewById(R.id.recycler_view_picture);
-        recycler_view_picture.setLayoutManager(new GridLayoutManager(this, 3));
-        recycler_view_picture.addItemDecoration(new SpaceItemDecoration(3, DisplayUtil.dip2px(this, 5), false));
+        fl_parent = findViewById(R.id.fl_parent);
+        recycler_view_picture.setLayoutManager(new GridLayoutManager(this, spanCount));
+        recycler_view_picture.addItemDecoration(new SpaceItemDecoration(spanCount, DisplayUtil.dip2px(this, 5), false));
         pictureAdapter = new ShowArticlePictureAdapter(R.layout.item_show_picture, new ArrayList<>());
         recycler_view_picture.setAdapter(pictureAdapter);
         updateItemTouchHelper();
@@ -53,18 +59,18 @@ public class PictureSelectorActivity extends AppCompatActivity {
                         .maxSelectNum(maxSelectCount - selectPictureCount)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
             } else {
-                List<LocalMedia> mPreviewPictures = new ArrayList<>();
+                ArrayList<String> mPreviewPaths = new ArrayList<>();
                 if (selectPictureCount < maxSelectCount) {
                     for (int i = 0; i < mSelectPictures.size(); i++) {
                         if (mSelectPictures.get(i).getId() != 0) {
-                            mPreviewPictures.add(mSelectPictures.get(i));
+                            mPreviewPaths.add(mSelectPictures.get(i).getRealPath());
                         }
                     }
                 }
-                PictureSelector.putIntentResult(mPreviewPictures);
-                PictureSelector.create(PictureSelectorActivity.this);
+                PreviewPictureActivity.startPreViewActivity(PictureSelectorActivity.this, position, mPreviewPaths);
             }
         });
+        fl_parent.bringChildToFront(recycler_view_picture);
         initPictureData();
     }
 
@@ -89,6 +95,24 @@ public class PictureSelectorActivity extends AppCompatActivity {
                 Collections.swap(mSelectPictures, viewHolder.getLayoutPosition(), target.getLayoutPosition());
                 pictureAdapter.notifyItemMoved(viewHolder.getLayoutPosition(), target.getLayoutPosition());
                 return false;
+            }
+
+            @Override
+            public void onChildDrawOver(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                View itemView = viewHolder.itemView;
+                c.save();
+                if (dX > 0) {
+                    c.clipRect(itemView.getLeft(), itemView.getTop(),
+                            itemView.getLeft() + dX, itemView.getBottom(), Region.Op.UNION);
+                    c.translate(itemView.getLeft(), itemView.getTop());
+                } else {
+                    c.clipRect(itemView.getRight() + dX, itemView.getTop(),
+                            itemView.getRight(), itemView.getBottom(), Region.Op.UNION);
+                    c.translate(itemView.getRight() + dX, itemView.getTop());
+                }
+                pictureAdapter.onItemSwiping(c, viewHolder, dX, dY, isCurrentlyActive);
+                c.restore();
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeCallback);

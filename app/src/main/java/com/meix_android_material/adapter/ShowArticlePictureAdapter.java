@@ -38,7 +38,7 @@ public class ShowArticlePictureAdapter extends BaseItemDraggableAdapter<LocalMed
         }else {
             GlideEngine.createGlideEngine().loadShowGridImage(mContext, item.getPath(), iv_show_picture);
         }
-        iv_show_picture.bringToFront();
+        helper.itemView.bringToFront();
         helper.addOnClickListener(R.id.iv_show_picture);
     }
 }

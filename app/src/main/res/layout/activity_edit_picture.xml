@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".activity.EditPictureActivity">
+
+    <com.meix_android_material.widget.DoodleView
+        android:id="@+id/iv_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.meix_android_material.widget.DoodleView>
+
+    <LinearLayout
+        android:id="@+id/ll_function"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"></TextView>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/scale_seekBar"
+            android:layout_width="match_parent"
+            android:max="360"
+            android:layout_height="20dp"></androidx.appcompat.widget.AppCompatSeekBar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_function"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="涂鸦"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="表情"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="文字"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"></TextView>
+
+        <TextView
+            android:id="@+id/tv_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="旋转"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"></TextView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

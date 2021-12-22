@@ -14,12 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Meix_Android_Material">
-        <activity android:name=".activity.PictureSelectorActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activity.EditPictureActivity"
+            android:theme="@style/ActivityDialogStyle"></activity>
+        <activity
+            android:name=".activity.PreviewPictureActivity"
+            android:theme="@style/ActivityDialogStyle" />
+        <activity
+            android:name=".activity.PictureSelectorActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.CustomDialogActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
