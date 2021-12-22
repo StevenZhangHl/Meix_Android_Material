@@ -37,6 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':meixlibrary')
+    implementation 'com.github.steven945:Meix_Android_Material:1.0.0'
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "io.github.lucksiege:pictureselector:$pictureselector"
