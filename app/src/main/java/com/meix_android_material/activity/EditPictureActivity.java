@@ -23,6 +23,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.luck.picture.lib.photoview.OnMatrixChangedListener;
 import com.luck.picture.lib.photoview.PhotoView;
+import com.meix.library.ui.ShapeTextView;
 import com.meix_android_material.R;
 import com.meix_android_material.widget.DoodleView;
 

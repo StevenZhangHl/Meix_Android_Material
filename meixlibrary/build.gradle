@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 def config = rootProject.ext.android // 配置
 android {
     compileSdkVersion 31
-    buildToolsVersion "28.0.2"
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 21
