@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Meix_Android_Material">
+        <activity android:name=".activity.StepsViewActivity"></activity>
         <activity
             android:name=".activity.EditPictureActivity"
-            android:theme="@style/ActivityDialogStyle"></activity>
+            android:theme="@style/ActivityDialogStyle" />
         <activity
             android:name=".activity.PreviewPictureActivity"
             android:theme="@style/ActivityDialogStyle" />

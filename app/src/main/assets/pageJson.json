@@ -18,5 +18,9 @@
   {
     "pageId": 5,
     "pageName": "图片选择"
+  },
+  {
+    "pageId": 6,
+    "pageName": "步骤条"
   }
 ]

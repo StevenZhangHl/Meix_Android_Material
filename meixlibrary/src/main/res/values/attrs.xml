@@ -18,4 +18,28 @@
         <attr name="text_content" format="string" />
         <attr name="shape_color" format="reference|color" />
     </declare-styleable>
+
+    <declare-styleable name="StepsView">
+        <attr name="current_step" format="integer"></attr>
+        <attr name="step_direction" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="progressMode" format="enum">
+            <enum name="full" value="0" />
+            <enum name="half" value="1" />
+        </attr>
+        <attr name="labelPlacement" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="progressBarHeight" format="dimension" />
+        <attr name="thumb_progressBar_Color" format="reference|color" />
+        <attr name="bg_progressBar_color" format="reference|color"/>
+        <attr name="point_radius" format="dimension"></attr>
+        <attr name="bottom_axis_to_top" format="dimension"/>
+        <attr name="anim_duration" format="integer"></attr>
+        <attr name="animated" format="boolean"></attr>
+        <attr name="progress_dot" format="boolean"/>
+    </declare-styleable>
 </resources>

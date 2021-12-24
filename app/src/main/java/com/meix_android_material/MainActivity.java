@@ -20,6 +20,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.meix.library.ui.CircleProgressBar;
 import com.meix.library.ui.DragView;
+import com.meix.library.ui.StepsView;
 import com.meix.library.utils.NumberUtil;
 import com.meix.library.utils.ProviderUtil;
 import com.meix_android_material.activity.ChatActivity;
@@ -27,6 +28,7 @@ import com.meix_android_material.activity.CustomDialogActivity;
 import com.meix_android_material.activity.PictureSelectorActivity;
 import com.meix_android_material.activity.ProgressBarActivity;
 import com.meix_android_material.activity.ShapeTextViewActivity;
+import com.meix_android_material.activity.StepsViewActivity;
 import com.meix_android_material.adapter.PageAdapter;
 import com.meix_android_material.model.PageModel;
 import com.meix_android_material.utils.GsonUtil;
@@ -77,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 5:
                 intent.setClass(MainActivity.this, PictureSelectorActivity.class);
+                break;
+            case 6:
+                intent.setClass(MainActivity.this, StepsViewActivity.class);
                 break;
             default:
                 break;

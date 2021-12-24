@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.StepsViewActivity">
+
+    <com.meix.library.ui.StepsView
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sp_16"
+        app:anim_duration="500"
+        app:animated="true"
+        app:point_radius="5dp"
+        app:labelPlacement="horizontal"
+        app:progressBarHeight="3dp"
+        app:progress_dot="true"
+        app:progressMode="half"
+        app:step_direction="horizontal"></com.meix.library.ui.StepsView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_add_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下一步"
+        app:layout_constraintTop_toBottomOf="@+id/step_view"></androidx.appcompat.widget.AppCompatButton>
+</LinearLayout>
