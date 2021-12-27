@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TitleBarActivity">
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"></com.meix.library.ui.TitleBar>
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar_one"></com.meix.library.ui.TitleBar>
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar_two"></com.meix.library.ui.TitleBar>
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar_three"></com.meix.library.ui.TitleBar>
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_five"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar_four"></com.meix.library.ui.TitleBar>
+</androidx.constraintlayout.widget.ConstraintLayout>

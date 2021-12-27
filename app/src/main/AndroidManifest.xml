@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Meix_Android_Material">
-        <activity android:name=".activity.StepsViewActivity"></activity>
+        <activity android:name=".activity.TitleBarActivity"></activity>
+        <activity android:name=".activity.StepsViewActivity" />
         <activity
             android:name=".activity.EditPictureActivity"
             android:theme="@style/ActivityDialogStyle" />

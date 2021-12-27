@@ -4,10 +4,12 @@ import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.meix.library.ui.CircleProgressBar;
+import com.meix.library.ui.TitleBar;
 import com.meix.library.utils.NumberUtil;
 import com.meix_android_material.R;
 
@@ -19,11 +21,17 @@ import com.meix_android_material.R;
 public class ProgressBarActivity extends AppCompatActivity {
     private CircleProgressBar progress_circular;
     private CircleProgressBar unlock_bar;
+    private TitleBar titleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progressbar);
+        String title = getIntent().getStringExtra("pageName");
+        titleBar = findViewById(R.id.titleBar);
+        titleBar.getBuilder(this)
+                .setMiddleTitle(title)
+                .create();
         progress_circular = findViewById(R.id.progress_circular);
         unlock_bar = findViewById(R.id.unlock_bar);
         progress_circular.with()

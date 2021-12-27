@@ -29,6 +29,7 @@ import com.meix_android_material.activity.PictureSelectorActivity;
 import com.meix_android_material.activity.ProgressBarActivity;
 import com.meix_android_material.activity.ShapeTextViewActivity;
 import com.meix_android_material.activity.StepsViewActivity;
+import com.meix_android_material.activity.TitleBarActivity;
 import com.meix_android_material.adapter.PageAdapter;
 import com.meix_android_material.model.PageModel;
 import com.meix_android_material.utils.GsonUtil;
@@ -82,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 6:
                 intent.setClass(MainActivity.this, StepsViewActivity.class);
+                break;
+            case 7:
+                intent.setClass(MainActivity.this, TitleBarActivity.class);
                 break;
             default:
                 break;

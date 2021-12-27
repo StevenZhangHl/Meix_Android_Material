@@ -6,3 +6,4 @@ android组件、工具类库
 * DragView
 * ShapeTextView
 * StepsView
+* TitleBar
