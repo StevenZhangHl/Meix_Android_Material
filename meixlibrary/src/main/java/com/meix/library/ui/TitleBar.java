@@ -191,6 +191,27 @@ public class TitleBar extends RelativeLayout {
         }
 
         /**
+         * 不展示左侧返回文本
+         * @return
+         */
+        public Builder showOnlyLeftImg(){
+            tv_left.setVisibility(GONE);
+            iv_left.setVisibility(VISIBLE);
+            return this;
+        }
+
+        /**
+         * 不展示左侧返回图标
+         * @return
+         */
+        public Builder showOnlyLeftStr(){
+            tv_left.setVisibility(VISIBLE);
+            iv_left.setVisibility(GONE);
+            return this;
+        }
+
+
+        /**
          * 隐藏中间标题
          *
          * @return
