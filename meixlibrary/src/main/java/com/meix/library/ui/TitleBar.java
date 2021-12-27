@@ -31,7 +31,7 @@ public class TitleBar extends RelativeLayout {
         void click(int position);
     }
 
-    public interface OnClickRightStrsListener{
+    public interface OnClickRightStrsListener {
         void click(int position);
     }
 
@@ -66,7 +66,7 @@ public class TitleBar extends RelativeLayout {
         private String middleTitle;
         private String leftTitle;
         private LinearLayout ll_middle;
-        private LinearLayout ll_right_function;
+        private LinearLayout ll_right_func;
         private int ivLeftImg;
         private int[] rightImgs = new int[]{};
         private String[] rightStrs = new String[]{};
@@ -83,7 +83,7 @@ public class TitleBar extends RelativeLayout {
             iv_left = rootView.findViewById(R.id.iv_back);
             tv_left = rootView.findViewById(R.id.tv_back);
             tv_middle_title = rootView.findViewById(R.id.tv_middle_title);
-            ll_right_function = rootView.findViewById(R.id.ll_right_function);
+            ll_right_func = rootView.findViewById(R.id.ll_right_function);
             ll_middle = findViewById(R.id.ll_middle);
             rightFuncDash = DisplayUtil.dip2px(context, 10);
         }
@@ -146,6 +146,19 @@ public class TitleBar extends RelativeLayout {
         }
 
         /**
+         * 完全自定义右侧view
+         * @param view
+         * @return
+         */
+        public Builder setSelfRightView(View view) {
+            if (ll_right_func.getChildCount() > 0) {
+                ll_right_func.removeAllViews();
+                ll_right_func.addView(view);
+            }
+            return this;
+        }
+
+        /**
          * 重新设置返回按钮的点击事件-设置后源码的点击事件将失效
          *
          * @param onClickLeftBackListener
@@ -161,7 +174,7 @@ public class TitleBar extends RelativeLayout {
             return this;
         }
 
-        public Builder setOnClickRightStrsListener(OnClickRightStrsListener onClickRightStrsListener){
+        public Builder setOnClickRightStrsListener(OnClickRightStrsListener onClickRightStrsListener) {
             this.onClickRightStrsListener = onClickRightStrsListener;
             return this;
         }
@@ -212,7 +225,7 @@ public class TitleBar extends RelativeLayout {
                         }
                     });
                     imageView.setLayoutParams(layoutParams);
-                    ll_right_function.addView(imageView);
+                    ll_right_func.addView(imageView);
                 }
             }
             if (rightStrs.length > 0) {
@@ -228,7 +241,7 @@ public class TitleBar extends RelativeLayout {
                         }
                     });
                     textView.setLayoutParams(layoutParams);
-                    ll_right_function.addView(textView);
+                    ll_right_func.addView(textView);
                 }
             }
         }
