@@ -27,6 +27,14 @@ public class TitleBar extends RelativeLayout {
         void click();
     }
 
+    public interface OnClickRightImgsListener {
+        void click(int position);
+    }
+
+    public interface OnClickRightStrsListener{
+        void click(int position);
+    }
+
     public TitleBar(Context context) {
         super(context);
         init(context);
@@ -55,21 +63,20 @@ public class TitleBar extends RelativeLayout {
         private TextView tv_middle_title;
         private ImageView iv_left;
         private TextView tv_left;
-        private ImageView iv_right;
-        private TextView tv_right;
         private String middleTitle;
         private String leftTitle;
-        private String rightTitle;
+        private LinearLayout ll_middle;
+        private LinearLayout ll_right_function;
         private int ivLeftImg;
-        private int ivRightImg;
         private int[] rightImgs = new int[]{};
+        private String[] rightStrs = new String[]{};
         /**
          * 右侧功能按钮直接的间距
          */
-        private int rightFunctionDash;
-        private LinearLayout ll_right_function;
+        private int rightFuncDash;
         private OnClickLeftBackListener onClickLeftBackListener;
-
+        private OnClickRightImgsListener onClickRightImgsListener;
+        private OnClickRightStrsListener onClickRightStrsListener;
 
         public Builder(Activity context) {
             this.context = context;
@@ -77,7 +84,8 @@ public class TitleBar extends RelativeLayout {
             tv_left = rootView.findViewById(R.id.tv_back);
             tv_middle_title = rootView.findViewById(R.id.tv_middle_title);
             ll_right_function = rootView.findViewById(R.id.ll_right_function);
-            rightFunctionDash = DisplayUtil.dip2px(context,10);
+            ll_middle = findViewById(R.id.ll_middle);
+            rightFuncDash = DisplayUtil.dip2px(context, 10);
         }
 
         public Builder setMiddleTitle(String middleTitle) {
@@ -87,11 +95,6 @@ public class TitleBar extends RelativeLayout {
 
         public Builder setIvLeftImg(int ivLeftImg) {
             this.ivLeftImg = ivLeftImg;
-            return this;
-        }
-
-        public Builder setIvRightImg(int ivRightImg) {
-            this.ivRightImg = ivRightImg;
             return this;
         }
 
@@ -107,6 +110,17 @@ public class TitleBar extends RelativeLayout {
         }
 
         /**
+         * 设置右侧文本支持设置多个
+         *
+         * @param ims
+         * @return
+         */
+        public Builder setRightStrs(String... ims) {
+            this.rightStrs = ims;
+            return this;
+        }
+
+        /**
          * 左侧的标题内容
          *
          * @param leftTitle
@@ -118,11 +132,16 @@ public class TitleBar extends RelativeLayout {
         }
 
         /**
-         * @param rightTitle
+         * 完全自定义中间标题view
+         *
+         * @param view
          * @return
          */
-        public Builder setRightTitle(String rightTitle) {
-            this.rightTitle = rightTitle;
+        public Builder setSelfMiddleView(View view) {
+            if (ll_middle.getChildCount() > 0) {
+                ll_middle.removeAllViews();
+                ll_middle.addView(view);
+            }
             return this;
         }
 
@@ -134,6 +153,16 @@ public class TitleBar extends RelativeLayout {
          */
         public Builder setOnClickLeftBackListener(OnClickLeftBackListener onClickLeftBackListener) {
             this.onClickLeftBackListener = onClickLeftBackListener;
+            return this;
+        }
+
+        public Builder setOnClickRightImgsListener(OnClickRightImgsListener onClickRightImgsListener) {
+            this.onClickRightImgsListener = onClickRightImgsListener;
+            return this;
+        }
+
+        public Builder setOnClickRightStrsListener(OnClickRightStrsListener onClickRightStrsListener){
+            this.onClickRightStrsListener = onClickRightStrsListener;
             return this;
         }
 
@@ -175,9 +204,31 @@ public class TitleBar extends RelativeLayout {
                     ImageView imageView = new ImageView(context);
                     imageView.setImageResource(rightImgs[i]);
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    layoutParams.leftMargin = rightFunctionDash;
+                    layoutParams.leftMargin = rightFuncDash;
+                    int finalI = i;
+                    imageView.setOnClickListener(v -> {
+                        if (onClickRightImgsListener != null) {
+                            onClickRightImgsListener.click(finalI);
+                        }
+                    });
                     imageView.setLayoutParams(layoutParams);
                     ll_right_function.addView(imageView);
+                }
+            }
+            if (rightStrs.length > 0) {
+                for (int i = 0; i < rightStrs.length; i++) {
+                    TextView textView = new TextView(context);
+                    textView.setText(rightStrs[i]);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    layoutParams.leftMargin = rightFuncDash;
+                    int finalI = i;
+                    textView.setOnClickListener(v -> {
+                        if (onClickRightStrsListener != null) {
+                            onClickRightStrsListener.click(finalI);
+                        }
+                    });
+                    textView.setLayoutParams(layoutParams);
+                    ll_right_function.addView(textView);
                 }
             }
         }

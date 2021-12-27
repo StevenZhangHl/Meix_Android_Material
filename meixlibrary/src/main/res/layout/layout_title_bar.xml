@@ -30,6 +30,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_middle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -50,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:gravity="center_vertical"
         android:layout_centerVertical="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="14dp">
     </LinearLayout>

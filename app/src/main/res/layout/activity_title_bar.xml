@@ -35,4 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/titleBar_four"></com.meix.library.ui.TitleBar>
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar_six"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar_five"></com.meix.library.ui.TitleBar>
 </androidx.constraintlayout.widget.ConstraintLayout>
