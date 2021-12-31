@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">每市物料</string>
+    <string name="picture_send_num">完成(%1$d/%2$d)</string>
+    <string name="picture_preview_num">预览(%1$d)</string>
+    <string name="item_camera_text"></string>
 </resources>

@@ -9,22 +9,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Region;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.style.PictureParameterStyle;
+import com.luck.picture.lib.style.PictureSelectorUIStyle;
 import com.meix.library.utils.DisplayUtil;
 import com.meix.library.utils.SpaceItemDecoration;
 import com.meix_android_material.R;
 import com.meix_android_material.adapter.ShowArticlePictureAdapter;
 import com.meix_android_material.utils.GlideEngine;
+import com.yalantis.ucrop.UCrop;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,11 +53,32 @@ public class PictureSelectorActivity extends AppCompatActivity {
         pictureAdapter = new ShowArticlePictureAdapter(R.layout.item_show_picture, new ArrayList<>());
         recycler_view_picture.setAdapter(pictureAdapter);
         updateItemTouchHelper();
+        UCrop.Options options = new UCrop.Options();
+        options.setStatusBarColor(Color.parseColor("#1A1A1A"));
+        options.setActiveWidgetColor(Color.parseColor("#E94222"));
+        PictureParameterStyle parameterStyle = new PictureParameterStyle();
+        PictureSelectorUIStyle uiStyle = PictureSelectorUIStyle.ofSelectNumberStyle();
+        uiStyle.picture_statusBarBackgroundColor = Color.parseColor("#1A1A1A");
+        uiStyle.picture_top_titleBarBackgroundColor = Color.parseColor("#1A1A1A");
+        uiStyle.picture_container_backgroundColor = Color.parseColor("#1A1A1A");
+        uiStyle.picture_check_style = R.drawable.bg_picture_checkbox_selector;
+        uiStyle.picture_bottom_barBackgroundColor = Color.parseColor("#1A1A1A");
+        uiStyle.picture_bottom_barHeight = DisplayUtil.dip2px(this, 49);
+        uiStyle.picture_bottom_previewTextColor = new int[]{Color.parseColor("#FFFFFF"), Color.parseColor("#E94222")};
+        uiStyle.picture_bottom_completeTextColor = new int[]{Color.parseColor("#FFFFFF"), Color.parseColor("#E94222")};
+        uiStyle.picture_bottom_completeRedDotBackground = R.drawable.shape_picture_icon_def;
+        uiStyle.picture_navBarColor = Color.parseColor("#1A1A1A");
+        uiStyle.picture_adapter_item_camera_backgroundColor = Color.parseColor("#262626");
+        uiStyle.picture_adapter_item_camera_text = R.string.item_camera_text;
+        uiStyle.picture_adapter_item_camera_textSize= 1;
+        uiStyle.isCompleteReplaceNum = true;
         pictureAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             LocalMedia info = mSelectPictures.get(position);
             if (info.getId() == 0) {
                 PictureSelector.create(PictureSelectorActivity.this)
                         .openGallery(PictureMimeType.ofImage())
+                        .setPictureUIStyle(uiStyle)
+                        .imageSpanCount(3)
                         .imageEngine(GlideEngine.createGlideEngine())
                         .maxSelectNum(maxSelectCount - selectPictureCount)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
@@ -141,7 +165,6 @@ public class PictureSelectorActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {

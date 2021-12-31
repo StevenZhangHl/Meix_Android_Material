@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ThreeDimensionsActivity">
+
+    <com.meix.library.ui.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"></com.meix.library.ui.TitleBar>
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="360"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar"></androidx.appcompat.widget.AppCompatSeekBar>
+
+    <com.meix.library.ui.ThreeDView
+        android:id="@+id/three_3d"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bg_girl"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar"></com.meix.library.ui.ThreeDView>
+</androidx.constraintlayout.widget.ConstraintLayout>

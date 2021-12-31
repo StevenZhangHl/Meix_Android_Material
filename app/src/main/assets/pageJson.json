@@ -26,5 +26,9 @@
   {
     "pageId": 7,
     "pageName": "标题栏"
+  },
+  {
+    "pageId": 8,
+    "pageName": "3D特效"
   }
 ]
